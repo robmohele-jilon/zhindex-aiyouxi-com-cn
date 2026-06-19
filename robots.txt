@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://robmohele-jilon.github.io/zhindex-aiyouxi-com-cn/sitemap.xml
