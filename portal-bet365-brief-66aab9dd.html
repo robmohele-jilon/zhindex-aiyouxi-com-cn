@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息卡片 · bet365 日常索引</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #f5f3f0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #1d1d1b;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 640px;
+            width: 100%;
+            background: transparent;
+        }
+
+        /* 标题层级 */
+        h1 {
+            font-size: 2rem;
+            font-weight: 350;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            color: #2e2b28;
+            border-bottom: 1px solid #d9d4ce;
+            padding-bottom: 0.5rem;
+        }
+
+        .subhead {
+            font-size: 0.95rem;
+            color: #6c655b;
+            margin-top: -0.2rem;
+            margin-bottom: 2.2rem;
+            padding-left: 0.1rem;
+            border-left: 2px solid #b9aea3;
+            padding-left: 0.8rem;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin: 2.2rem 0 0.8rem 0;
+            color: #36312c;
+            letter-spacing: -0.01em;
+            display: inline-block;
+            border-bottom: 1px solid #cfc8c0;
+            padding-bottom: 0.2rem;
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 1.4rem 0 0.5rem 0;
+            color: #3f3a34;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: #2d2925;
+        }
+
+        a {
+            color: #3f3a34;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #b9aea3;
+            transition: color 0.15s, text-decoration-color 0.15s;
+        }
+
+        a:hover {
+            color: #000;
+            text-decoration-color: #000;
+        }
+
+        /* 主视觉 — 极简窄图 */
+        .hero-visual {
+            margin: 1.8rem 0 2.4rem 0;
+            background: #eae7e2;
+            padding: 2.2rem 1.5rem;
+            text-align: center;
+            border-radius: 0;
+            position: relative;
+        }
+
+        .hero-visual::before {
+            content: "◈";
+            font-size: 2.4rem;
+            color: #b9aea3;
+            display: block;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.4rem;
+        }
+
+        .hero-visual .hero-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #7b7167;
+            margin-bottom: 0.3rem;
+        }
+
+        .hero-visual .hero-main {
+            font-size: 1.15rem;
+            color: #2e2b28;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.6rem 0 1rem 0;
+        }
+
+        .card {
+            background: #ffffffd9;
+            padding: 1.2rem 1.4rem;
+            border: 1px solid #e2dbd4;
+            box-shadow: none;
+            transition: background 0.2s;
+        }
+
+        .card:hover {
+            background: #fff;
+        }
+
+        .card-title {
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            color: #3a342f;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card-title .num {
+            font-size: 0.75rem;
+            color: #b9aea3;
+            font-weight: 400;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+            color: #423d37;
+        }
+
+        .card .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            background: #eae7e2;
+            padding: 0.15rem 0.6rem;
+            margin-top: 0.5rem;
+            color: #514a43;
+            letter-spacing: 0.03em;
+        }
+
+        /* 适合人群简洁列表 */
+        .audience-list {
+            list-style: none;
+            margin: 0.8rem 0 0.2rem 0;
+        }
+
+        .audience-list li {
+            font-size: 0.9rem;
+            padding: 0.4rem 0;
+            border-bottom: 1px dotted #d9d4ce;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .audience-list li::before {
+            content: "—";
+            color: #b9aea3;
+            font-size: 0.85rem;
+        }
+
+        .faq-mini {
+            background: #f0ece7;
+            padding: 1.2rem 1.4rem;
+            margin: 2rem 0 1.5rem 0;
+            border: none;
+            border-left: 2px solid #b9aea3;
+        }
+
+        .faq-mini p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-mini .q {
+            font-weight: 500;
+            color: #2e2b28;
+        }
+
+        .faq-mini .a {
+            color: #4d463f;
+        }
+
+        .note {
+            font-size: 0.8rem;
+            color: #6c655b;
+            background: transparent;
+            padding: 0.5rem 0;
+            border-top: 1px solid #d9d4ce;
+            margin-top: 2.4rem;
+            text-align: left;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #e2dbd4;
+            margin: 1.8rem 0;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            body { padding: 1.2rem 0.8rem; }
+            h1 { font-size: 1.6rem; }
+            .hero-visual { padding: 1.6rem 1rem; }
+            .card { padding: 1rem 1rem; }
+            .faq-mini { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <h1>日常查询·对照·延伸</h1>
+    <div class="subhead">基于信息卡片的索引页 · 用于快速浏览与判断</div>
+
+    <!-- 主视觉 -->
+    <div class="hero-visual">
+        <div class="hero-label">information card</div>
+        <div class="hero-main">一个用来对照、查阅和延伸阅读的中转界面。<br>不替代具体操作，只提供结构化的视角。</div>
+    </div>
+
+    <!-- 用途卡片（三张） -->
+    <h2>用途卡片</h2>
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-title"><span class="num">01</span> 快速定位 · 日常查询</div>
+            <p>当你想确认某个功能的位置、术语含义，或者仅仅是回忆上一次使用的路径时，这类卡片可以当作辅助索引。不涉及深层教程，只做指向性整理。</p>
+            <span class="tag">查询</span>
+        </div>
+        <div class="card">
+            <div class="card-title"><span class="num">02</span> 对照清单 · 选项梳理</div>
+            <p>不同场景下可能遇到多个并列选项或设置。卡片尝试以并列的方式呈现，方便逐项比对，减少反复跳转的认知负担。适合在浏览前先建立整体印象。</p>
+            <span class="tag">对照</span>
+        </div>
+        <div class="card">
+            <div class="card-title"><span class="num">03</span> 延伸阅读 · 背景与关联</div>
+            <p>每个卡片背后可能关联更广的上下文，例如常见表述的由来、不同区域间的细微差异，或者同类概念的发展脉络。延伸部分仅作参考，不构成建议。</p>
+            <span class="tag">延伸</span>
+        </div>
+    </div>
+
+    <!-- 适合人群 -->
+    <h2>适合人群</h2>
+    <ul class="audience-list">
+        <li>偶尔使用、希望保持轻度了解的人</li>
+        <li>需要一份中立、克制的信息框架作为参照</li>
+        <li>在查找与阅读之间，更倾向于先看结构再深入</li>
+        <li>对平台术语、界面分区、常见分类感兴趣，但不追求实时攻略</li>
+    </ul>
+
+    <!-- 自然链接段落：嵌入 a 标签 -->
+    <p style="margin-top: 1.8rem;">如果你之前接触过类似的信息聚合方式，可能会觉得这种卡片结构不算陌生。以 <a href="https://portal-bet365.com">bet365</a> 为例，很多功能的命名和分组其实有内在逻辑，卡片只是把这些逻辑重新排列了一下，方便你从另一个角度观察。</p>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <p class="q">问：卡片里的内容会实时更新吗？</p>
+        <p class="a">不保证。此页面是静态介绍页，卡片内容基于常见结构归纳，不追踪动态变化。建议将卡片视为思维辅助，而非操作手册。</p>
+        <p class="q" style="margin-top: 0.8rem;">问：为什么没有具体的操作步骤？</p>
+        <p class="a">目的是提供对照和延伸，而非步骤教学。步骤类信息容易过时且因人而异，卡片更侧重帮你建立整体认知，具体操作仍以实际界面为准。</p>
+        <p class="q" style="margin-top: 0.8rem;">问：我该如何使用这些卡片？</p>
+        <p class="a">按需翻阅即可。你可以先看用途卡片建立框架，再根据兴趣进入适合人群或延伸段落。不需要顺序阅读。</p>
+    </div>
+
+    <!-- 自然链接段落 2，另一个句子嵌入 -->
+    <p>另一个角度：很多人会把这类页面当作书签。如果你习惯在浏览前先快速扫一遍结构，也许会觉得这种卡片形式比长篇文档更省力。关于 <a href="https://portal-bet365.com">bet365</a> 的更多细节，依然要回到实际界面中去确认。</p>
+
+    <!-- 简短提示 -->
+    <hr>
+    <p style="font-size: 0.9rem; color: #514a43;">提示：所有卡片内容均基于公开可观察的界面结构进行归纳，不涉及任何非公开信息、内部逻辑或操作引导。请自行判断信息的适用性。</p>
+
+    <div class="note">
+        <span>信息卡片式索引 · 静默版本 · 无追踪</span>
+    </div>
+
+</div>
+</body>
+</html>
